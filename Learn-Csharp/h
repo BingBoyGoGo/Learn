@@ -1,0 +1,30 @@
+[33mcommit e914b24f324b1329c01cfdd0106cc0aa0d7dbb4a[m
+Author: BingBoyGoGo <2621396965@qq.com>
+Date:   Mon Jun 26 22:25:39 2017 +0800
+
+    until win32
+    
+    Commit some summary until win32
+
+ CLASS.cs                                           | 79 [32m++++++++++++++++++++++[m
+ Convert.cs                                         | 76 [32m+++++++++++++++++++++[m
+ Exception.cs                                       | 35 [32m++++++++++[m
+ HelloWorld.cs                                      | 13 [32m++++[m
+ TextClass.cs                                       | 62 [32m+++++++++++++++++[m
+ convert2.cs                                        | 37 [32m++++++++++[m
+ delegate event.cs                                  | 49 [32m++++++++++++++[m
+ interface.cs                                       | 61 [32m+++++++++++++++++[m
+ string and array.cs                                | 42 [32m++++++++++++[m
+ variable.cs                                        | 44 [32m++++++++++++[m
+ variable2.cs                                       | 39 [32m+++++++++++[m
+ ...\347\256\227\347\254\246\345\222\214foreach.cs" | 77 [32m+++++++++++++++++++++[m
+ 12 files changed, 614 insertions(+)
+
+[33mcommit 8dcb0992697d21c8c214e33efbc73b7ac46ba35b[m
+Author: BingBoyGoGo <2621396965@qq.com>
+Date:   Mon Jun 26 22:17:59 2017 +0800
+
+    Initial commit
+
+ .gitattributes | 2 [32m++[m
+ 1 file changed, 2 insertions(+)
