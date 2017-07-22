@@ -1,0 +1,89 @@
+************************ Python爬虫 **************************
+  -- URL
+	-- 协议 http(s),ftp,file,ed2k...
+	-- 域名或IP[:端口号]
+	-- 具体地址
+  
+  -- urllib
+	-- urllib 与 urllib2的Packge
+ 
+
+************************ urllib.request ***********************
+
+  -- urlopen() 打开url
+	-- import urllib.request as request
+ 	   response = request.urlopen('https://github.com/BingBoyGoGo/Learn')
+	   html = respose.read() 		# 获取网页代码
+	   html = html.decode('utf-8') 		# 转码
+	   print(html)				# 打印网页代码
+	
+  	-- geturl() 	获取网页地址
+		response.geturl()
+	-- info()	详细信息
+		print(response.info())
+	-- getcode()
+	
+  -- Request() 
+	-- req = request.Request('https://github.com/BingBoyGoGo/Learn')
+	   response = urlopen(req)		# 打开该网页
+	
+	-- add_header()
+
+  -- 创建urllib.parse()对象
+	-- data={...}
+	   data = urllib.parse.urlencode(data).encode('utf-8')
+	   # 把data字典转换成urllib.parse()对象并转码
+	   # 此时可以用urlopen(url,data)或Request(url,data)
+
+  -- 改写User-Agent User-Agent在header里
+	-- header = {}
+	   header['User-Agent'] = "......"
+	   urllib.request.Request(url,data,header)
+	-- urllib.request.Request(url,data).add_headers("User-Agent",value)
+	   # 在使用Request()之后添加User-Agent
+
+  -- 代理
+  	-- 设置字典{'类型':'代理ip:端口号'}
+		proxy_support = urllib.request.ProxyHandler({})
+	-- 创建opener
+		opener = urllib.request.build_opener(proxy_support)
+		opener.addheaders = [(key,val)...] # 追加headers
+	-- 调用opener
+		urllib.request.install_opener(opener) 安装后直接写urlopen
+		opener.open(url) 没有安装则这样写
+	
+
+*************************** 正则表达式 re模块 ******************************
+  -- serach() 查找字符串位置
+	-- serach(r'bing','bing is a handsome boy')
+	   # 查找出第一次出现bing字符串的相对位置区间[,)
+	-- . 通配符，匹配任何字符
+		search('b.','bing')  # [0,2),match='bi'
+	-- | 管道符，相当于or
+	-- ^ 脱字符，起始位置
+		search(r'^bing','I am bing') # 匹配以bing开头字符串
+	-- $ 字符串结束位置
+		search(r'bing$','I am bing') 
+	-- \ 匹配的字符格式
+		\d 数字 
+	-- \ 解除元子符的特殊功能
+
+	-- *，+，? 匹配表达式0或多次，1或多次，0或1次，相当于
+	   {0,},{1,},{0,1}
+	-- *? +? ?? 对应的非贪婪模式
+
+	-- 字符类[] 匹配到字符类中任意字符即成功
+		re.search(r'[aeiou]','bing') # [0,1),match='b'
+	   	-- 范围 [0-9] 相当于[0123456789]
+
+	-- 匹配次数{}
+		re.search('a{3}','baaa') 相当于'aaa'
+		{n,m} 重复次数n-m次
+			re.search(a'{3,5}','aaaa')
+
+	-- 匹配IP
+		'(([01]{0,1}\d{0,1}\d|2[0-4]\d|25[0-5])\.){3}[01]{0,1}\d{0,1}\d|2[0-4]\d|25[0-5]'
+	
+ -- 模式对象	
+	-- p = re.compile(r'[A-Z]')
+	   p.search("BING") # 相当于 re.search(r'[A-Z]',"BING")

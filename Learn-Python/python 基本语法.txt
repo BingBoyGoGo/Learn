@@ -1,0 +1,412 @@
+**************************** Python **************************** 
+ -- IDLE基本操作 
+   	加缩进 	Ctrl+]
+	减缩进  Ctrl+[
+	加注释 	Alt+3
+	去注释	Alt+4
+	上一条命令   	Alt+p
+	下一条命令	Alt+n
+	Enter	鼠标选中后进行复制
+
+
+********************* Python的缩进就是个坑 *********************
+ 
+ -- print () 输出到标准设备
+	-- print("bing") 	输出字符串
+	-- print("bin" + "g")	输出bing
+	-- print("bing\n" * 7)	输出7次bing并每一行回车换行
+	-- print(8)		输出8
+	-- print(8+5)		输出8+5的结果
+	-- .......
+
+ -- r+字符串可以将\转义,但\不能出现在末尾，会转义\0的\而变成\\0
+	-- str = r'\bing'
+
+ -- input() 从标准输入设备读入
+	-- var = input("input a number: ")
+
+
+************************** 算术运算 ****************************
+ -- += -= *= /=     x if 条件 else y三元操作符
+ -- 地板除法用//
+ -- 幂运算 **
+	-- 3 ** 2 结果是9(3^2)
+ -- 优先级,自上而下
+	-- 幂运算 **
+	-- 正负号 + -
+	-- 算术运算符 * / //
+	   + -
+	-- 比较操作符 < > == <= >= !=
+	-- 逻辑运算符 and or not
+	-- += -= *= /=
+
+
+**************************** 分支 ******************************
+ -- if 条件	
+    elif 条件
+    else
+ 	-- n = int(input())
+	   if 5 == n:
+	   	print(n)
+	   else:
+		print(2*n)
+
+
+**************************** 循环 ******************************
+ -- while 条件:
+
+ -- for 目标 in 列表:  	这和C#的foreach类似
+  	-- i = [1,2,3]
+	   for each in i:
+		print(each) 
+	-- for each in range(10): # range(10)生成[0,10)的含10个数的列表
+	   	print(each)
+
+		
+**************************** 列表list **************************
+ -- []括起来的表
+	-- normal = [1,2,3] 常规的列表
+	-- normal = [i for i in range(10)] 
+	-- normal = range(2,10) 也可以用range()来写
+	-- mix    = [1,"bing",[2,3]] 混合的列表
+	   # 混合列表中有其他列表时可以索引两次
+	   # 如mix[2][0] 结果为2		
+	-- empty  = [] 创建一个空列表
+ 
+ -- 索引和数组一样 normal[index]
+
+ -- list()方法，把一个可迭代对象转化成list
+	-- b = "bing"
+	-- b = list(b)
+
+ -- 列表的操作符
+ 	-- 比较 
+		-- list1 > list2
+		   # 比较的是list1[0]与list2[0]
+	-- 逻辑
+		-- in 判断是否在列表
+			-- "bing" in list1
+		-- not in 判断元素是否不在列表
+			-- "bing" not in list1
+			-- list2 = [1,[2,3],4]
+			   2 not in list2 
+			   # 结果是True
+			   # 因为只索引第一个层次
+			   2 not in list2[1]
+			   # 这个结果才是False
+	-- 算术
+		-- list1 += list2 将两个列表的元素拼接到list1中
+		-- list1 *= 3 相当于list1 = list1 + list1 + list1
+ 
+ -- append() 追加元素，一个参数
+	-- normal.append(4) 添加到列表的尾部
+ -- extend() 追加元素，一个参数，参数类型为list
+ 	-- normal.extend([1,2])
+ -- insert() 插入元素
+	-- normal.insert(1,"bing")
+ -- remove() 移除元素
+	-- mix.remove("bing")
+        # del 也能移除列表元素
+	-- del normal[1]
+ -- pop() 弹出元素并返回
+	-- normal.pop() 弹出最后一个元素
+	-- normal.pop(1) 弹出第二个元素
+ -- count() 返回某元素出现的次数	  
+	-- normal.count(1)
+ -- index() 返回某元素第一次出现的位置
+	-- list1 = [1,1,1,1]
+	   list1.index(1,0,4) 从[0,4)的范围内查找第一次出现的位置
+ -- reverse() 反转列表
+	-- normal.reverse()
+ -- sort() 排序 sort(func, key, reverse=False) 默认归并排序,从小到大排序
+	-- normal.sort() 从小到大排序
+	-- normal.sort(reverse=True) 从大到小排序 
+
+ -- slice 列表分片 获取列表中的N个元素，是列表的一个拷贝
+   	-- normal[n:m] 获取[n,m)区间的元素
+	   # LIST = normal 其实相当于引用，LIST相当于normal的别名
+	-- normal2 = normal[:] 拷贝normal列表
+
+
+************************* tuple元组 ****************************
+ -- 用()括起来的表，元素不能修改，应该是被const限定了，
+    基本操作和列表一样
+ 
+ -- tuple()方法，把一个可迭代对象变成tuple()
+	-- b = [1,2,3]
+	   b = tuple(b)
+
+ -- 创建 
+	-- tuple = (1,2)
+	-- tuple = 8 * (1,)
+	-- tuple = 1,2  # 这样创建也行
+	-- tuple = (1)  # 此时tuple是int
+	-- tuple = (1,) # 用逗号区分
+	   # 在C/C++中解释为逗号运算符
+  
+ -- 更新和删除
+	-- 更新
+		-- # 复制整个元组来插入
+		   tuple = (1,2,4,5)
+		   tuple = tuple[:2] + (3,) + tuple[2:]   
+	  	   # 原先的元组会被回收机制回收	
+	-- 删除 
+		-- del tuple # 删除整个元组
+ -- 操作符
+	-- 拼接操作符 + 和列表一样
+	-- 重复操作符 *	和列表一样
+	-- 成员操作符 in , not in 和列表一样
+	-- 逻辑操作符 和列表一样
+	-- 比较操作符 和列表一样	   
+
+
+**************************** 字典 dict *************************
+ -- 创建 用花括号,{key : value} 	项 == 键:值
+	-- dic = {1:"b", 2:"i", 3:"n", 4:"g"}
+	-- dic = {1='b', 2='g'} # 用关键字参数创建
+	-- dic = dic.fromkeys(range(10)) # 每个key值为None
+	-- dic = dic.fromkeys(range(10),'a') # 每个key对应一个a
+	-- dic[key] = value     # 直接添加一个项
+	   # 若key重复则值保留一个项
+ -- 访问 dictionary[key]
+	-- dic[2]
+ -- 修改value
+	-- dic[1] = 'c'
+ 
+ -- keys() 	获取所有键
+ -- values()	获取所有值       
+ -- items() 	获取所有项
+ -- get() 	获取键对应的值，若没有键则忽略
+ -- in,not in
+
+
+*************************** 集合set *****************************
+ -- 集合中的元素具有唯一性
+ -- 集合的元素不能索引
+ -- set1 = {1,2,3,4,4} # 结果是{1,2,3,4}
+ -- set1 = set([1,2,3,4,4]) # 结果是{1,2,3,4}
+ -- frozenset 不可变集合
+
+
+************************* format ********************************
+ -- format 格式化
+ 	-- "{0} l {1}".format("bing","y") {0},{1}保留字段，位置参数
+	-- "{a} l {b}".format(a="bing",b="y") 
+	-- #或两者的混合
+	   "{0},{c}".format("bing",c="y") 保留字段须在{c}之前
+
+
+**************************** 函数 ******************************* 
+ -- def func():
+ -- 关键字参数
+	-- def func(a,b):
+	   	return a+b
+	   func(b="ng",a="bi") # 结果是bing 
+ -- 默认参数
+ -- 收集参数 将参数存放到元组中
+	-- def func(*a) # 参数前加*
+	   	print(a[1])
+	   func(1,"bing",3.14) # 结果是bing
+
+ -- 返回值 返回多个值时默认为元组
+	-- return "bing",1,3.14
+	-- return [1,2,3,"bing"] 返回的是列表
+
+ -- 局部(Local)变量和全局(Global)变量
+    在函数内部试图修改全局变量时，会用shadowing机制屏蔽全局变量
+    若修改全局变量需加globla关键字
+	 -- globla var
+ 	    var = 10
+
+ -- 内嵌函数和闭包
+	-- 内嵌函数 在函数内部定义函数
+		-- def fun1()
+			print(1)
+			def fun2()
+				print("bing")
+			fun2() # 调用一次fun2()
+		   fun1() # 执行print("bing")
+				
+	-- 闭包 在内部函数里，对在外部作用域的变量操作
+		-- def fun1(x)
+			def fun2(y)
+				return x*y
+			return fun2()
+		   fun = fun1(5)
+		   fun(8) # 结果是(5*8=)40
+		   # 与指针函数有点相似，但可以带参数
+		   # 里层必须返回
+ 
+ -- lambda表达式和匿名函数
+	-- lam = lambda x: 2*x 	# 这个函数是没有名字的
+ 	   lam(3) # 结果是7
+	-- lam = lambda x,y : 2*(x+y) 
+	   lam(1,2) # 结果是6
+
+
+************************* 文件操作 ******************************
+ -- 方法和C/C++类似
+ -- open() 打开文件
+ -- close() 关闭文件
+ -- read() 读取数据
+ -- readline() 读取一行数据
+ -- write() 写入数据
+ -- writeline() 写入一行数据
+ -- tell() 文件指针位置
+ -- seek() 移动文件指针
+
+
+*************************** 异常 ********************************
+ -- try:
+	...
+    except Exception[as reason]:
+	...
+    # 或 except(ERROR1,ERROR2,...)
+    finally: # 可选，无论是否出错都执行的代码块
+	...
+
+ -- try: 语句块中断后将不执行后续代码，所以收尾工作应放在finally:
+
+	-- try:
+		f = open("文件.txt",'a')
+		f.write('bing')
+		1 + '1'
+		list1 = [1,2]
+		list1[3]
+	   except TypeError as reason:
+		print("ERROR: " + str(reason))
+	   except(OSError):
+		print("ERROR")
+	   except:
+		print("error")
+	   finally:
+		f.close() # 文件关闭应放在finally
+
+ -- raise 引发异常
+	-- raise TypeError # 抛出TypeError异常
+
+ -- with 
+	-- with open("bing.txt",'w') as f:
+	   # 当引发异常时会自动f.close()
+
+
+************************ 类和对象 *******************************
+ -- 封装，类定义
+	--class Name:
+		# 属性
+		...
+		# 方法
+		...
+	-- class Bing():
+		def x():
+			print("bing")
+	   b = Bing()
+	   b.x = 4
+	   # 实例化后，b.x()被b.x覆盖
+ 		
+ -- ClassName()实例化对象
+	-- class Name:
+		def p(self):	# self相当于this指针
+			print("1")
+	   Name().p()
+	   obj = Name()
+	   obj.p()	# 两者都能打印"1"
+
+ -- __dict__ 查看类的属性
+
+ -- 继承 
+	-- class Derived(Base):
+		# pass 什么都不做
+
+ -- 多态
+
+ -- 访问控制 
+	-- 属性和方法是公有的
+	-- 私有 name mangling机制，在属性或方法前加入__
+		-- __var
+		   # obj.__var 不可访问
+		   # 但obj._ClassName__var能访问，私有是伪的
+
+ -- 覆盖父类方法 同名时子类自动覆盖
+    包含父类方法的内容：
+	-- 未绑定的父类方法
+		-- def p(self):
+			BaseClass.p(sefl)
+			...
+	-- super()
+		-- def p(self):
+			super().p()
+			...
+ 
+ -- issubclass(class, classinfo) 检查是否为子类，自身认为是自身的子类
+	-- class B(A,C)
+	   issubclass(B,(A,C))	检查是否是A,C的子类
+ -- isinstance(object, classinfo) 检查是否是某类的实例化对象，
+    基类也认为是
+ -- hasattr(object,name) 检查是否为属性
+	-- hasattr(bing,'b')
+ -- getattr(obj, name [,Error]) 返回对象属性的值，不存在则抛出异常
+ -- setattr(obj, name, value)	设置对象属性的值，若不错在则创建属性
+ -- delattr(obj, name)		删除对象属性	
+ -- property(fget=None,fset=None,fdel=None,doc=None)
+    通过属性修改属性
+	-- class C:
+		def get(self): 
+			return y  
+	   	def set(self,value):
+			self.y = value
+	   	def del(self):
+			del y
+	   	x = property(get,set,del)
+	   c = C()
+	   c.x = 5 	# 调用set()
+	   c.x     	# 调用get()
+	   del c.x 	# 调用del()
+
+ -- 魔法方法
+	-- __new__(class [,...]) 在构造函数调用之前
+
+    	-- 构造函数 __init__()
+
+	-- 析构函数 __del__(self)
+
+ 	-- __str__() 用于在打印对象时输出一个字符串
+		-- class A:
+			def __str__(self):
+				return "bing"
+		   print(A()) # 此时打印的就是bing
+	-- __repr__() 与__str__()功能相似，能实现__str__()的效果
+		-- class A:
+			def __repr__(self):
+				return "bing"
+		   A() # 打印bing
+		   print(A()) # 打印bing
+	
+	-- 属性访问的方法
+		-- __getattr__() 尝试访问不存在的属性时的行为
+		-- __getattribute__() 访问属性时的行为
+ 		-- __setattr__() 属性被设置时的行为
+		-- __setattribute__() 属性被删除时的行为
+ 	
+	-- 描述符
+		-- __get__() 
+		-- __set__()
+		-- __delete__()
+		   property()就是一个描述符类
+	
+	-- 迭代器
+		-- __iter__() 获取迭代器 BIF iter()
+		-- __next__() 往下走，末尾时抛出异常 BIF next()
+		
+	-- 生成器 迭代器的一个实现
+		-- 使独立函数得以中断执行
+			-- def aa():
+				yield 1 # 中断 用next()继续
+				print("bing")
+				yield 2 # 中断 用next()继续
+			   next(iter(a())) 调到aa()第一个中断处并打印
+			   a = aa()
+			   next(a)
+			   next(a)
+			   for i in aa()
+				print(i) # 迭代的方法 
