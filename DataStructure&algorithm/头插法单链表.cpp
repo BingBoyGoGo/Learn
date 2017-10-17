@@ -20,7 +20,7 @@ LinkList* seekLinkList(int count,int position, LinkList *headNode)
 	
 	if (position > count || position <= 0)
 	{
-		std::cout << "seek position error\n";//ÅÐ¶Ï²éÕÒµÄÎ»ÖÃÊÇ·ñÒì³£
+		std::cout << "seek position error\n";//åˆ¤æ–­æŸ¥æ‰¾çš„ä½ç½®æ˜¯å¦å¼‚å¸¸
 	}
 	else
 	{
@@ -29,11 +29,11 @@ LinkList* seekLinkList(int count,int position, LinkList *headNode)
 		while(i++<position-1)
 		{
 			prev = prev->next;
-		}//prevÖ¸ÏòµÚposition½ÚµãµÄÇ°Ò»¸ö½Úµã
+		}//prevæŒ‡å‘ç¬¬positionèŠ‚ç‚¹çš„å‰ä¸€ä¸ªèŠ‚ç‚¹
 	}
 	
 	return prev;
-}//·µ»ØµÚposition¸ö½ÚµãµÄÇ°Ò»¸ö½ÚµãµÄµØÖ·
+}//è¿”å›žç¬¬positionä¸ªèŠ‚ç‚¹çš„å‰ä¸€ä¸ªèŠ‚ç‚¹çš„åœ°å€
 
 /*************************************************/
 bool deleteNode(int count,int position,LinkList *headNode)
@@ -48,9 +48,9 @@ bool deleteNode(int count,int position,LinkList *headNode)
 		return ok;
 	}
 	
-	LinkList *delNode = prev->next;//ÒªÉ¾³ýµÄ½Úµã
-	prev->next = prev->next->next;//Ô½¹ýÒªÉ¾³ýµÄ½ÚµãÖ¸ÏòÏÂÒ»¸ö½Úµã
-	delete delNode;//É¾³ý½Úµã
+	LinkList *delNode = prev->next;//è¦åˆ é™¤çš„èŠ‚ç‚¹
+	prev->next = prev->next->next;//è¶Šè¿‡è¦åˆ é™¤çš„èŠ‚ç‚¹æŒ‡å‘ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+	delete delNode;//åˆ é™¤èŠ‚ç‚¹
 	
 	return ok;
 }
@@ -97,7 +97,7 @@ LinkList* creatLinkList(int count)
 	}
 	prevNode->next = NULL;
 
-	//ÒÔÏÂÓï¾äÅÐ¶ÏÊÇ·ñ´´½¨Ê§°Ü
+	//ä»¥ä¸‹è¯­å¥åˆ¤æ–­æ˜¯å¦åˆ›å»ºå¤±è´¥
 	if (headNode->next == NULL)
 		c_error = true;
 
@@ -185,3 +185,4 @@ int main()
 	delLinkList(headNode, count);
 	return 0;
 }
+// ä»Šå¤©ä¸€çœ‹ä¸ºä»€ä¹ˆè¿™ä¹ˆé•¿
