@@ -4,10 +4,46 @@
 ****HTML
  * HTML不是一门编程语言，而是一套标记标签，是一种标记语言
  
+ 
+ 
+ 
 ****HTML基本结构
  * <!DOCTYPE HTML>
-   
+   <html>
+	   <head>
+			<meta http-equiv= "Content-Type" content="text/html;charset=gb2312" />
+			<title>FirstWeb</title>
+	   </head>
+	   <body>
+			<p>ByBingogo</p>
+	   </body>
+   </html>
  
  * <!DOCTYPE HTML>	引用官方DTD(文档类型定义)文件
    * 是文档引用规范，H5已不需要引用严格意义上的DTD规范
-    
+
+ * <html>标签
+   * html文档的根元素标签   
+   
+ * <head>标签
+   * html头部标签
+   * <title> 		定义文档标题
+	 * 一般写在head内，搜索引擎看重的关键词
+   * <script> 		包含javascript脚本
+   * <link>			链接外部CSS资源文件
+   * <style>		定义内部CSS样式
+   * <meta>			用于HTML页面的元数据
+     * 定义页面元信息
+	 * http-equiv 指定元信息的名称，该属性指定的名称具有特殊意义，可以向浏览器
+	   传回有用信息，帮助浏览器正确处理文本
+	   描述文档类型和字符编码
+	   <meta http-equiv="Content-Type" content="text/html;charset=gbk"/>
+	 * name 指定元信息名称，名称值可以随意指定
+	   <meta name="author" content="BINGOGO" />
+	   <meta name="keyword" content="LearHTML" />
+	   <meta name="description" content="LearnHTML" />
+	 * content 指定元信息的值
+	
+ * <body>标签
+   * html主题标签
+   
