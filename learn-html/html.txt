@@ -132,6 +132,7 @@
    
 ****frameset框架集
  * 创建各个窗口对应的HTML文件，创建整个框架文件，引用子窗口文件
+ * H5中已没有frameset
  * 基本语法
    <frameset cols="20%,*" rows="50%,*" border="5" noresize="noresize">
      <frame src=".html" name="name" />
@@ -143,3 +144,176 @@
  * rows/cols=pixels、%、*(剩余部分)
  * noresize不可改变子窗口大小
  * name 指定框架页名字以便在<a></a>标签中给target赋值
+ 
+
+****iframe内嵌框架
+ * 能嵌入网页当中，作为网页的一部分
+ * 常用属性
+   * 属性         		值 				描述 
+     frameborder      	0、1			规定是否显示框架周围的边框
+	 name 				name			规定iframe的名称，效果同frameset
+	 scrolling			yes、no、auto	规定是否在iframe中显示滚动条
+	 src				URL				规定在iframe中显示的文档的URL
+	 width/length		%,pixels(如40px)规定嵌入页面的大小
+   * 基本语法
+     * <body>
+		<iframe src="引用页面地址" name="框架标识名"
+		 frameborder="边框" scrolling="滚动条" />
+	   </body>
+	   
+	   
+	   
+****表格标签
+ * 基本结构
+ 
+ * 相关元素
+   * <table>		定义表格 
+					<table width="50%" heigth="50%" border="1" 
+					 bgcolor="#ffffff" cellspacing(外边距)="0"
+					 cellpadding="0px" align="center">  
+					</table>
+   * <tr>			定义表格行，该元素只能包含<td> <th> 两个元素
+   * <td>			定义单元格，包含两个主要的属性 colspan(指定单元格跨多少行)
+					rowspan(指定单元格可横跨的行数) 
+					<td rowspan="2">
+   * <caption>		用于定义表格标题
+   * <th>			定义页眉的单元格
+   * <tbody> 		定义表格的主体
+   * <thead>		定义表格头
+   * <tfoot>		定义表格脚
+   
+ * 各种属性
+   
+ * 缺点
+   * 代码量大，页面浏览速度比较慢
+   * 层次结构复杂，不易于维护和改版
+   * 不利于搜索引擎查找
+   
+   
+****form标签，如QQ登陆界面就是一个表单
+ * 基本语法
+   * <form action="表单提交地址" method="提交方法">
+       表单元素
+	 </form>
+ * 属性
+   * action 	指定表单提交后由服务器哪个处理程序进行处理
+   * enctype 	用于指定表单数据的编码方式
+     * application/x-www-form-urlencoded	
+	    默认的编码方式，将表单控件中的值处理成URL编码方式
+	 * mutipart/form-data	
+	    以二进制流的方式来处理表单数据
+	 * text/plain
+		当表单的action属性值为 mailto:URL 的形式时使用
+	* method 	指定向服务器提交的方式，一般为get或post
+ 
+ * 常见的表单元素
+   * input元素
+     * 单行文本框 	指定<input.../>元素的type属性为text即可
+	 * 密码输入框 	指定<input.../>元素的type属性为password即可
+	 * 隐藏域		指定<input.../>元素的type属性为hidden即可
+	 * 单选框		指定<input.../>元素的type属性为radio即可
+	 * 复选框		指定<input.../>元素的type属性为checkbox即可
+	 * 图像域		指定<input.../>元素的type属性为image即可
+					type="image"时，可以指定width/height
+	 * 文本上传域	指定<input.../>元素的type属性为file即可
+	 * 提交、重置、普通按钮	
+					指定<input.../>元素的type属性为submit、reset、button即可
+	 * 常用属性
+	   * checked	设置单选框、复选框的初始状态是否处于选中状态，只有当
+					type属性值为checkedbox或radio时才可指定 
+					checked="checked"
+	   * disabled	设置首次加载时禁用此元素。type="hidden"时不能指定 
+					disabled="disabled"
+	   * maxlength	指定文本框中所允许输入的最大字符数 
+	   * readonly	指定文本框中的值不可修改(但可以通过javascript修改)
+	   * size		指定该元素的长度。type="hidden"时不可指定
+	   * src		指定图像所显示的图像URL，只有当type="image"时才可指定
+   
+   * button定义按钮，比input的button更丰富
+     * <button type="按钮类型">
+		普通文本、格式化文本、图像
+	   </button>
+	 * 常用属性
+	   * disabled	指定是否禁用此元素
+	   * name		设置按钮唯一名称
+	   * type 		指定为button/reset/submit
+	   
+   * label
+     * 用户点击文本时光标跳到关联处
+	  <label for="id1"></lable>文本<input type="text" id="id1">
+	 
+   * 列表框和下拉菜单，<select />元素里只能包含<option>和<optgroup>两种元素	
+     * <select name="指定列表名称" size="行数">
+		<option value="选项值" selected="selected"> ... </option> 
+		</select>
+	 * 属性
+	   * disabled	指定是否禁用此元素。只能是disabled或者省略
+	   * mutiple	设置该列表框是否允许多选
+	   * size		指定该列表内同时显示多少个列表项
+	 * <select id="city" name="city" multiple="multiple" size="3">
+	    <optgroup label="北方">
+		 <option>北京</option>
+		</optgroup>
+		<optgroup label="南方">
+		 <option>上海</option>
+		 <option>深圳</option>
+		 <option>广州</option>
+	    </optgroup>
+	   </select>
+	 * <option />	定义列表框选项或菜单项
+	   * disabled 	指定禁用该选项，只能是disabled或省略
+	   * selected 	指定该列表初始状态是否处于被选中状态，值只能是selected
+	   * value 		指定该选项对应的请求参数值
+	 * <optgroup>	用于定义列表项或菜单项组
+	   * label 		指定该选项组的标签，必填
+	   * disabled 	禁用该选项组的所有选项，只能是disabled或省略
+     * 下拉菜单比列表框少了size，不可多选
+	   <select id="city" name="city">
+	    <option>北京</option>
+		<option>上海</option>
+		<option>深圳</option>
+		<option>广州</option>
+	   </select>
+	   
+   * 多行文本框
+     * <textarea name="" cols="列宽" rows="行宽">
+		文本内容
+	   </textarea>
+	 * 属性
+	   cols 		指定宽度，必填
+	   rows			指定高度，必填
+	   readonly 	指定只读，只能是readonly或省略
+	   
+	   
+	   
+****音频和视频标签
+ * <embed>标签
+   * 播放音频
+	 <embed src="a.mp3" width="800" height="600" autostart="true" loop="true">
+     </embed>
+   * 播放视频
+	 <embed src="a.swf" width="800" height="600" loop="true" quality="high"
+	  PLUGINSPAGE="http://www.******"></embed>
+	  若没有插件则从http://www.******中下载
+	  
+ * <object>标签 
+   * 可以使用<object>标签来给浏览器加载插件，通过加载的插件来播放音频和视频
+   * 一般嵌入ActiveX插件，一般用于IE
+   * 播放音频
+     <object data="a.mp3">
+	  <param name="src" value="a.mp3">
+	  <param name="autoplay" value="true">
+	 </object>
+   * 播放视频 
+	 <object classid="clsid(设置ActiveX控件id):"
+	  width="" height=""
+	  codebase(与<embed>的PLUGINSPAGE类似)="">
+	  <param name="movie" value="a.mp4">
+	  <param name="play" value="true">
+	  <param name="loop" value="true">
+	  <param name="quality" value="high">
+	 </object>
+	 
+ * 为了实现浏览器更好的兼容性，一般用object标签内嵌套embed标签
+ 
+ * HTML5中提供了audio和video标签进行音频和视频播放
