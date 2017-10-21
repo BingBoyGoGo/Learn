@@ -55,12 +55,91 @@
 	 ...
 	 <h6>六级标题</h6>
 	 </body>
+	 
  * 段落标签
    * <p>段落标签</p>
      <p>每个段标签会相隔一定距离</p>
+ 
  * 水平线标签，会画出一条水平线
    * <hr /> 
- * 
+ 
+ * 有序列表标签
+   * <ol>
+		<li>在此可放图片，链接等</li>
+		<li>列表项2</li>
+	 </ol>
+ 
+ * 无序列表标签
+   * <ul>
+		<li>与有序列表差不多</li>
+	 </ul>
+ 
+ * 定义描述标签
+   * <dl>
+		<dt>标题1</dt>
+		<dd>描述1</dd>
+		<dd>描述2</dd>
+		<dt>标题2</dt>
+		<dd>描述3</dd>
+     </dl>
+  
+ * 分区标签，对网页对整体分块布局，通过样式才能看见
+   * <div>头部内容</div>
+	 <div>导航内容</div>
+	 <div id="section"></div>
 
-
+	 
+	 
+****常用的行级标签
+ * 按行逐一显示，前后不会自动换行
+ 
+ * 文本格式化元素
+   * <b> 		定义粗体文本
+   * <i> 		定义斜体文本
+   * <em> 		定义强调文本，实际效果与斜体文本差不多
+   * <strong> 	定义粗体文本，与<b>作用基本相同
+   * <small>	定义小号文本
+   * <sub>		定义下标文本
+   * <sup>		定义上标文本
+   * <bdo> 		定义文本显示方向，内有dir(ection)属性，只能取值ltr或rtl(right to left)
+     * <bdo dir="rtl">文本</bdo>
+	
+ * 超链接标签
+   * <a href="url" target="targetWindow">链接文本或图片</a>
+   * href 	指定超链接所关联的另一个资源
+   * target 指定框架中的哪个框架来装载另一个资源，该属性可以是
+			_self、_blank、_top、_parent
+			
+ * 图像标签
+   * <img src="资源地址" alt="提示文字" />
+     * alt 找不到图片时显示的文本
+	 
+ * <span>标签
+   * <span>文本等行级内容</span>
+   * 对强调内容标注以凸显，需要加上样式
+   * 内部只嵌套行级标签
    
+ * <br/>标签
+   * 换行标签，<p></p>标签段落相隔比<br/>大
+   
+ * 常用特殊符号
+   * 空格 		&nbsp;
+   * 大于(>)	&gt;
+   * 小于(<)	&lt;
+   * 引号("")	&quot;
+   * 版权号		&copy;
+   
+   
+****frameset框架集
+ * 创建各个窗口对应的HTML文件，创建整个框架文件，引用子窗口文件
+ * 基本语法
+   <frameset cols="20%,*" rows="50%,*" border="5" noresize="noresize">
+     <frame src=".html" name="name" />
+	 ...
+   </frameset>
+ * <frameset></frameset>标签不能与<body></body>标签同时使用。
+   除非在<frameset>中嵌入<noframes>，在<noframes>中能嵌入。
+ * <noframes></noframes>当浏览器不支持<frameset>时会调用
+ * rows/cols=pixels、%、*(剩余部分)
+ * noresize不可改变子窗口大小
+ * name 指定框架页名字以便在<a></a>标签中给target赋值
